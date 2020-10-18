@@ -58,7 +58,7 @@ class SignUpForm extends Component {
             this.setState({
               ...INITIAL_STATE
             });
-            history.push("/"); //redirects to Home Page
+            history.push("/home"); //redirects to Home Page
           })
           .catch(error => {
             this.setState(byPropKey("error", error));
