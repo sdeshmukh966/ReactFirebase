@@ -1,5 +1,6 @@
 // Home page.
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
 
 const LandingPage = () => (
   <div>
@@ -13,6 +14,9 @@ const LandingPage = () => (
       duis anim occaecat. Mollit pariatur minim aute eiusmod est ad dolore
       labore fugiat deserunt quis. Aliquip dolor ex irure sunt voluptate
       exercitation voluptate incididunt.
+    </p>
+    <p>
+        <Link to="/shownotes">See notes</Link>
     </p>
   </div>
 );
