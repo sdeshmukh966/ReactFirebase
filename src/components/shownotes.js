@@ -14,7 +14,7 @@ const INITIAL_STATE = {
     showingAlert: false
 };
 
-const SignInPage = ({ history }) => {
+const Notes = ({ history }) => {
     return (
       <div className="div-flex">
         <div>
@@ -37,18 +37,18 @@ class Notes extends Component {
   
       const { history } = this.props;
   
-      auth
-        .doSignInWithEmailAndPassword(email, password)
-        .then(() => {
-          this.setState({ ...INITIAL_STATE });
-          history.push("/");
-        })
-        .catch(error => {
-          this.setState(byPropKey("error", error));
-          this.timer(); //defined below
-        });
+    //   auth
+    //     .doSignInWithEmailAndPassword(email, password)
+    //     .then(() => {
+    //       this.setState({ ...INITIAL_STATE });
+    //       history.push("/");
+    //     })
+    //     .catch(error => {
+    //       this.setState(byPropKey("error", error));
+    //       this.timer(); //defined below
+    //     });
   
-      event.preventDefault();
+    //   event.preventDefault();
     };
   
     // facebookLogin = () => {
@@ -94,7 +94,7 @@ class Notes extends Component {
     render() {
       const { name, subject, description, author, link, error, showingAlert } = this.state;
   
-      const isInvalid = password === "" || email === "";
+    //   const isInvalid = password === "" || email === "";
   
       return (
         <div>
@@ -136,11 +136,11 @@ class Notes extends Component {
               /> */}
             {/* </FormGroup> */}
   
-            <div className="text-center">
+            {/* <div className="text-center">
               <Button disabled={isInvalid} type="submit">
                 Sign In
               </Button>
-            </div>
+            </div> */}
           {/* </Form> */}
   
           <hr />
