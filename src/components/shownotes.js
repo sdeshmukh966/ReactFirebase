@@ -145,7 +145,7 @@ class Notes extends Component {
   
           <hr />
   
-          <FacebookLoginButton onClick={this.facebookLogin} />
+          {/* <FacebookLoginButton onClick={this.facebookLogin} /> */}
           {/* <button onClick={this.facebookLogin}>Login with Facebook</button> */}
         </div>
       );
