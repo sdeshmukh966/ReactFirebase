@@ -7,7 +7,9 @@ import { firebase } from "../firebase";
 import LandingPage from "./Landing";
 import SignUpPage from "./SignUp";
 import SignInPage from "./SignIn";
+import HomePage from "./HomePage"
 import withAuthentication from "./withAuthentication";
+import createNotes from "./createNotes";
 
 const App = () => (
   <BrowserRouter>
@@ -15,7 +17,8 @@ const App = () => (
       {/* <Navigation /> */}
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/signin" component={SignInPage} />
-      <Route exact path="/signup" component={SignUpPage} />
+      <Route exact path="/home" component={HomePage} />
+      <Route exact path="/createnotes" component={createNotes} />
     </Container>
   </BrowserRouter>
 )
