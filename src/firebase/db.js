@@ -23,7 +23,7 @@ export const doCreateTask = (id, name, subject, description, author, link) =>
 export const doGetAnTask = tid => db.ref(`notes/${tid}`).once("value")
 
 // Return All tasks.
-export const doGetAnTask = () => db.ref("notes").once("value")
+export const doGetTasks = () => db.ref("notes").once("value")
 
 //returns all users from firebase realtime db
 export const onceGetUsers = () => db.ref("users").once("value");
