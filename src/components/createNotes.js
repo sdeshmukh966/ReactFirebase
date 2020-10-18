@@ -38,13 +38,14 @@ const createNotes = ({ history }) => {
   
       const { history } = this.props;
         
-  
+    console.log(name,subject,description,link)
       event.preventDefault();
     };
   
     
     render() {
       const { name, subject, description,error,link, showingAlert } = this.state;
+      
     
       return (
         <div>

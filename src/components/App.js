@@ -23,5 +23,4 @@ const App = () => (
   </BrowserRouter>
 )
 
-// export default App;
-export default withAuthentication(App); //using HoC to handle session
+export default withAuthentication(App);
