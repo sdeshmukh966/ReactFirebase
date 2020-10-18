@@ -26,27 +26,35 @@ const createNotes = ({ history }) => {
     name: "",
     subject:"",
     description:"",
-    link:"",
-
+    plinks:"",
   };
   
   class CreateNoteForm extends Component {
     state = { ...INITIAL_STATE };
-  
+
     onSubmit = event => {
-      const {name,subject,description,link } = this.state;
-  
-      const { history } = this.props;
-        
+     event.preventDefault();
+
+    const {name,subject,description,link } = this.state;
+    const { history } = this.props;  
     console.log(name,subject,description,link)
-      event.preventDefault();
+    db.doCreateNotes(
+       name,
+       subject,
+       description,
+       link,
+      )
+        .then(() => {
+          history.push("/home"); //redirects to Home Page
+        })
+        .catch(error => {
+          this.setState(byPropKey("error", error));
+        });
     };
   
     
     render() {
-      const { name, subject, description,error,link, showingAlert } = this.state;
-      
-    
+      const { name, subject, description,error, showingAlert,link } = this.state;
       return (
         <div>
           {showingAlert && (
@@ -93,19 +101,19 @@ const createNotes = ({ history }) => {
                 }
               />
             </FormGroup>
-
             <FormGroup>
-              <Label for="exampleEmail">Notes Link</Label>
+              <Label for="exampleDescription">Notes URL</Label>
               <Input
-                type="text"
+                type="url"
                 name="link"
-                id="exampleLink"
+                id="exampleDescription"
                 value={link}
                 onChange={event =>
                   this.setState(byPropKey("link", event.target.value))
                 }
               />
             </FormGroup>
+          
   
             <div className="text-center">
               <Button type="submit">
@@ -121,4 +129,4 @@ const createNotes = ({ history }) => {
   }
 
 
-export default withRouter(createNotes);
+export default createNotes;

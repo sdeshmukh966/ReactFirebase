@@ -39,11 +39,6 @@ class SignUpForm extends Component {
     ...INITIAL_STATE
   };
 
-  // onChange = (propName, value) => {
-  //   this.setState({
-  //     [propName]: value
-  //   });
-  // };
 
   onSubmit = event => {
     const { username, email, passwordOne } = this.state;

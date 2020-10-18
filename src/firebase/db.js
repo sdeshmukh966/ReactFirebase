@@ -10,8 +10,8 @@ export const doCreateUser = (id, username, email) =>
     email
   });
 
-export const doCreateTask = (id, name, subject, description, author, link) =>
-    db.ref(`notes/${id}`).set({
+export const doCreateNotes = (name, subject, description, author, link) =>
+    db.ref(`notes/${name}`).set({
         name,
         subject,
         description,
