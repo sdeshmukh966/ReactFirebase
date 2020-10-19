@@ -166,14 +166,11 @@ class SignUpForm extends Component {
   }
 }
 
-//################### Sign Up Link ###################
-//used in the sign in when the user don't have an account registered yet
 const SignUpLink = () => (
   <p>
     Don't have an account? <Link to="/signup">Sign Up</Link>
   </p>
 );
 
-//exports
 export default withRouter(SignUpPage); //using a HoC to get access to history
 export { SignUpForm, SignUpLink };

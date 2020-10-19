@@ -14,9 +14,9 @@ import createNotes from "./createNotes";
 const App = () => (
   <BrowserRouter>
     <Container>
-      {/* <Navigation /> */}
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/signin" component={SignInPage} />
+      <Route exact path="/signup" component={SignUpPage} />
       <Route exact path="/home" component={HomePage} />
       <Route exact path="/createnotes" component={createNotes} />
     </Container>

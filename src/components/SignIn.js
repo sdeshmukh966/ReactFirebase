@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
 import { FacebookLoginButton } from "react-social-login-buttons";
 import { withRouter } from "react-router-dom";
+import './homepage.css'
 // import { SignUpLink } from "./SignUp";
 // import { PasswordForgetLink } from "./PasswordForget";
 import { auth, db } from "../firebase";
@@ -54,53 +55,14 @@ class SignInForm extends Component {
     event.preventDefault();
   };
 
-  facebookLogin = () => {
-    const { history } = this.props;
-    auth
-      .doFacebookSignIn()
-      .then(authUser => {
-        console.log("authUser", authUser);
-
-        db.doCreateUser(
-          //store some info from facebook into the firebase db
-          authUser.user.uid,
-          authUser.user.displayName,
-          authUser.user.email
-        )
-          .then(() => {
-            // this.setState({
-            //   ...INITIAL_STATE
-            // });
-            history.push("/"); //redirects to Home Page
-          })
-          .catch(error => {
-            this.setState(byPropKey("error", error));
-          });
-      })
-      .catch(error => {
-        this.setState(byPropKey("error", error));
-      });
-  };
-
-  timer = () => {
-    this.setState({
-      showingAlert: true
-    });
-
-    setTimeout(() => {
-      this.setState({
-        showingAlert: false
-      });
-    }, 4000);
-  };
-
+  
   render() {
     const { email, password, error, showingAlert } = this.state;
 
     const isInvalid = password === "" || email === "";
 
     return (
-      <div>
+      <div >
         {showingAlert && (
           <Alert color="danger" onLoad={this.timer}>
             {error.message}
@@ -114,7 +76,7 @@ class SignInForm extends Component {
               type="email"
               name="email"
               id="exampleEmail"
-              placeholder="user@gmail.com"
+              placeholder="Your email id here"
               value={email}
               onChange={event =>
                 this.setState(byPropKey("email", event.target.value))
@@ -127,7 +89,7 @@ class SignInForm extends Component {
               type="password"
               name="password"
               id="examplePassword"
-              placeholder="pass-test"
+              placeholder="Your Password here"
               value={password}
               onChange={event =>
                 this.setState(byPropKey("password", event.target.value))
@@ -143,9 +105,6 @@ class SignInForm extends Component {
         </Form>
 
         <hr />
-
-        <FacebookLoginButton onClick={this.facebookLogin} />
-        {/* <button onClick={this.facebookLogin}>Login with Facebook</button> */}
       </div>
     );
   }
