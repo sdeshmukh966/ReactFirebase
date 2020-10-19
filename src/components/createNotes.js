@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
 import { auth, db } from "../firebase";
 import { withRouter } from "react-router-dom";
+import firebase from "firebase/app";
 
 
 const createNotes = ({ history }) => {
@@ -26,7 +27,7 @@ const createNotes = ({ history }) => {
     name: "",
     subject:"",
     description:"",
-    plinks:"",
+    link:"",
   };
   
   class CreateNoteForm extends Component {
@@ -38,11 +39,15 @@ const createNotes = ({ history }) => {
     const {name,subject,description,link } = this.state;
     const { history } = this.props;  
     console.log(name,subject,description,link)
+    var user = firebase.auth().currentUser;
+    console.log("User ",user.uid)
+    const author=user.uid
     db.doCreateNotes(
        name,
        subject,
        description,
-       link,
+       author,
+       link
       )
         .then(() => {
           history.push("/home"); //redirects to Home Page
@@ -104,7 +109,7 @@ const createNotes = ({ history }) => {
             <FormGroup>
               <Label for="exampleDescription">Notes URL</Label>
               <Input
-                type="url"
+                type="text"
                 name="link"
                 id="exampleDescription"
                 value={link}
