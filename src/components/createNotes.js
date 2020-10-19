@@ -109,7 +109,7 @@ const createNotes = ({ history }) => {
             <FormGroup>
               <Label for="exampleDescription">Notes URL</Label>
               <Input
-                type="text"
+                type="url"
                 name="link"
                 id="exampleDescription"
                 value={link}

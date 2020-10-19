@@ -20,10 +20,15 @@ export const doCreateNotes = (name, subject, description, author, link) =>
     });
 
 // Return One tasks.
-export const doGetAnTask = tid => db.ref(`notes/${tid}`).once("value")
+export const doGetNotesByName = name => db.ref(`notes/${name}`).once("value")
 
 // Return All tasks.
-export const doGetTasks = () => db.ref("notes").once("value")
+export const doGetTasks = () => db.ref("notes").on("value", snapshot => {
+  // console.log("FireB ",snapshot)
+  let data = snapshot.value();
+  const todoItems = {...data};
+  return todoItems;
+  });
 
 //returns all users from firebase realtime db
 export const onceGetUsers = () => db.ref("users").once("value");
